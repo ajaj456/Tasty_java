@@ -1,0 +1,23 @@
+package com.tasty.member.service;
+
+import com.tasty.controller.ServiceInterface;
+import com.tasty.member.dao.MemberDao;
+import com.tasty.member.model.Login;
+import com.tasty.util.Input;
+
+public class LoginService implements ServiceInterface{
+	@Override
+	public Object service(Object obj) {
+		String id = Input.inputString("아이디");
+		String pw = Input.inputString("비밀번호");
+		
+		MemberDao dao = new MemberDao();
+		Login login = dao.login(id, pw);
+		
+		Login.id = login.getId();
+		Login.name = login.getName();
+		Login.grade = login.getGrade();
+		
+		return null;
+	}
+}

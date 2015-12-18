@@ -2,6 +2,10 @@ package com.tasty.controller;
 
 import com.tasty.board.controller.BoardController;
 import com.tasty.member.controller.MemberController;
+import com.tasty.member.model.Login;
+import com.tasty.member.service.FindService;
+import com.tasty.member.service.LoginService;
+import com.tasty.member.service.LogoutService;
 import com.tasty.notice.controller.NoticeController;
 import com.tasty.qna.controller.QnaController;
 import com.tasty.util.Input;
@@ -10,14 +14,40 @@ import com.tasty.util.Print;
 public class Main {
 	public static void main(String[] args) {
 		ControllerInterface controller = null;
+		ServiceInterface service = null;
+		
+		String menu1;
+		String menu2;
 		
 		while(true) {
-			Print.printTitle("맛집을 찾아서", "*");
-			Print.printMenu("1. 로그인/로그아웃\t2. 오늘의 맛집\n3. 맛집 이야기\t\t4. 질문게시판\n5. 회원관리\n0. 종료");
+			if(Login.id != null) {
+				Print.printTitle(Login.name + "님 반갑습니다", "=");
+				
+				menu1 = "1. 로그아웃";
+				if(Login.grade == 9)
+					menu2 = "5. 회원관리";
+				else
+					menu2 = "5. 마이페이지";
+			}
+			else {
+				menu1 = "1. 로그인";
+				menu2 = "5. 회원가입\n6. 아이디 찾기\t7. 비밀번호 찾기";
+			}
 			
-			switch(new Input().inputInt()) {
+			Print.printTitle("맛집을 찾아서", "*");
+			Print.printMenu(menu1 + "\t2. 오늘의 맛집\n3. 맛집 이야기\t4. 질문게시판\n" + menu2 + "\n0. 종료");
+			
+			switch(Input.inputInt()) {
 			case 1:
 				// 로그인/로그아웃
+				if(Login.id != null) {
+					service = new LogoutService();
+					service.service(null);
+				}
+				else {
+					service = new LoginService();
+					service.service(null);
+				}
 				break;
 			
 			case 2:
@@ -44,9 +74,25 @@ public class Main {
 				controller.process();
 				break;
 				
+			case 6:
+				// 아이디 찾기
+				service = new FindService();
+				service.service("id");
+				break;
+				
+			case 7:
+				// 비밀번호 찾기
+				service = new FindService();
+				service.service("pw");
+				break;
+				
 			case 0:
 				System.out.println("프로그램을 종료합니다.");
 				return;
+				
+			default:
+				System.out.println("잘못 입력하셨습니다.");
+				break;
 			}
 		}
 	}
