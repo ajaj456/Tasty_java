@@ -8,6 +8,11 @@ public class Input {
 		return Integer.parseInt(in.nextLine());
 	}
 	
+	public static int inputInt(String str) {
+		Scanner in = new Scanner(System.in);
+		return Integer.parseInt(in.nextLine());
+	}
+	
 	public static String inputString(String str) {
 		System.out.print(str + ": ");
 		Scanner in = new Scanner(System.in);
