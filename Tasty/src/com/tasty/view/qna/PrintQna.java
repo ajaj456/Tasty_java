@@ -14,7 +14,7 @@ public class PrintQna {
 			System.out.print("| " + qna.getNo() + " | " + qna.getTitle());
 			if (qna.getAnswer() != null)
 				System.out.print("(답변)");
-			System.out.print(" | " + qna.getWriter() + " | " + qna.getWdate() + " | " + qna.getHit() + " |");
+			System.out.print(" | " + qna.getWriter() + " | " + qna.getWdate() + " | " + qna.getHit() + " |" + "\n");
 		}
 	}
 
