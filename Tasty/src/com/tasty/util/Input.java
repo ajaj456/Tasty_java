@@ -9,6 +9,7 @@ public class Input {
 	}
 	
 	public static int inputInt(String str) {
+		System.out.print(str + ": ");
 		Scanner in = new Scanner(System.in);
 		return Integer.parseInt(in.nextLine());
 	}
