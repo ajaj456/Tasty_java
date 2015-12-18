@@ -17,6 +17,7 @@ public class QnaViewService implements ServiceInterface {
 		System.out.print("질문번호: ");
 		QnaDao dao = new QnaDao();
 		Qna qna = dao.view(Input.inputInt());
+		dao.increase(qna.getNo());
 		while(true) {
 			PrintQna out = new PrintQna();
 			out.printView(qna);

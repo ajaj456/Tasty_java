@@ -152,4 +152,23 @@ public class QnaDao extends CommonDao{
 			}
 		}
 	}
+
+	public void increase(int no) {
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = "update qna set hit = hit + 1 where no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
