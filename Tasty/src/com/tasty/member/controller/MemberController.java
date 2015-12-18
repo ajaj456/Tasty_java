@@ -9,7 +9,7 @@ public class MemberController implements ControllerInterface {
 	public void process() {
 		while(true) {
 			Print.printTitle("회원관리", "*");
-			Print.printMenu("1. 회원리스트\t2. 회원정보보기\n3. 회원정보수정\t4. 회원탈퇴\n5. 비밀번호 변경\t6. 아이디 찾기\n0. 비밀번호 찾기");
+			Print.printMenu("1. 회원리스트\t\t2. 회원정보보기\n3. 회원정보수정\t\t4. 회원탈퇴\n5. 비밀번호 변경\t6. 아이디 찾기\n0. 비밀번호 찾기");
 			
 			switch(new Input().inputInt()) {
 			case 1:
