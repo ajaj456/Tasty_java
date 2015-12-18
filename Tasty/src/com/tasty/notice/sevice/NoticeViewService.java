@@ -23,12 +23,12 @@ public class NoticeViewService implements ServiceInterface {
 			case 1:
 				// 맛집리스트
 				service = new NoticeUpdateService();
-				service.service(null);
+				service.service(no);
 				break;
 			case 2:
 				// 글삭제 
 				service = new NoticeDeleteService();
-				service.service(null);
+				service.service(no);
 				return null;
 			case 0:
 				// 이전 메뉴

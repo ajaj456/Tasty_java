@@ -4,7 +4,6 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.org.apache.regexp.internal.recompile;
 import com.tasty.common.CommonDao;
 import com.tasty.notice.model.Notice;
 import com.tasty.util.Print;
@@ -18,7 +17,7 @@ public class NoticeDao extends CommonDao {
 			conn = DriverManager.getConnection(url, id, pw);
 			String sql = "select no, title, to_char(wdate,'yyyy-mm-dd')wdate, to_char(startdate,'yyyy-mm-dd')startdate, "
 					+ " to_char(enddate,'yyyy-mm-dd')enddate from notice ";
-			switch ((String) obj){
+			switch ((String) obj) {
 			case "now": // 현재공지
 				Print.printTitle("오늘의 맛집리스트", "*");
 				sql += " where startdate <= sysdate and enddate >= sysdate-1 ";
@@ -76,14 +75,14 @@ public class NoticeDao extends CommonDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				notice.setNo(rs.getInt("no"));
 				notice.setTitle(rs.getString("title"));
 				notice.setContent(rs.getString("content"));
 				notice.setWdate(rs.getString("Wdate"));
 				notice.setStartDate(rs.getString("Startdate"));
 				notice.setEndDate(rs.getString("enddate"));
-				}
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -100,9 +99,8 @@ public class NoticeDao extends CommonDao {
 				e.printStackTrace();
 			}
 		}
-
-		return notice;	
-		}
+		return notice;
+	}
 
 	public void write(Notice notice) {
 		// TODO Auto-generated method stub
