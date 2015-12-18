@@ -56,4 +56,35 @@ public class QnaDao extends CommonDao{
 		return list;
 	}
 
+	public Qna view(int no) {
+		Qna qna = new Qna();
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = "select no, title, question, answer, wdate, writer, hit from qna where no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				qna.setNo(rs.getInt("no"));
+				qna.setTitle(rs.getString("title"));
+				qna.setQuestion(rs.getString("question"));
+				qna.setAnswer(rs.getString("answer"));
+				qna.setWdate(rs.getString("wdate"));
+				qna.setWriter(rs.getString("writer"));
+				qna.setHit(rs.getInt("hit"));
+				return qna;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null)rs.close();
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 }
