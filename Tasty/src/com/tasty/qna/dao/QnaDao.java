@@ -33,7 +33,6 @@ public class QnaDao extends CommonDao{
 	public List<Qna> list() {
 		List<Qna> list = null;
 		try {
-			
 			conn = DriverManager.getConnection(url, id, pw);
 			String sql = "select no, title, question, answer, to_char(wdate, 'yyyy-mm-dd') wdate, writer, hit from qna order by no desc";
 			pstmt = conn.prepareStatement(sql);
@@ -86,5 +85,47 @@ public class QnaDao extends CommonDao{
 			}
 		}
 		return null;
+	}
+
+	public void update(Qna qna) {
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = "update qna set title = ?, question = ?, writer = ? where no = ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qna.getTitle());
+			pstmt.setString(2, qna.getQuestion());
+			pstmt.setString(3, qna.getWriter());
+			pstmt.setInt(4, qna.getNo());
+			System.out.println("질문수정 성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void reply(Qna qna) {
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = "update qna set answer = ?, where no = ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qna.getAnswer());
+			pstmt.setInt(2, qna.getNo());
+			System.out.println("답변하기|수정 성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

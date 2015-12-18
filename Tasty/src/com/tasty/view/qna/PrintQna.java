@@ -7,6 +7,7 @@ import com.tasty.qna.model.Qna;
 public class PrintQna {
 
 	public void printList(Object obj) {
+		@SuppressWarnings("unchecked")
 		List<Qna> list = (List<Qna>) obj;
 		System.out.println("| 글번호 | 글제목 | 작성일 | 작성자 | 조회수 |");
 		for (Qna qna : list) {

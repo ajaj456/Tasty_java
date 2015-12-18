@@ -8,9 +8,21 @@ public class InputQna {
 	public Qna inputData() {
 		Qna qna = new Qna();
 		qna.setTitle(Input.inputString("질문제목"));
-		qna.setQuestion(Input.inputString("질문제목"));
+		qna.setQuestion(Input.inputString("질문내용"));
 		qna.setWriter(Input.inputString("작성자"));
 		return qna;
+	}
+
+	public void inputUpdateData(Qna qna) {
+		qna.setTitle(Input.inputString("질문제목"));
+		qna.setQuestion(Input.inputString("질문내용"));
+		qna.setWriter(Input.inputString("작성자"));
+		return;
+	}
+
+	public void inputReplyData(Qna qna) {
+		qna.setAnswer(Input.inputString("답변내용"));
+		return;
 	}
 
 	
