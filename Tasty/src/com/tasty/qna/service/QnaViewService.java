@@ -33,7 +33,7 @@ public class QnaViewService implements ServiceInterface {
 				// 질문삭제
 				service = new QnaDeleteService();
 				service.service(qna.getNo());
-				break;
+				return null;
 				
 			case 3:
 				// 답변하기

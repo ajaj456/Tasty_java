@@ -18,6 +18,8 @@ public class QnaDao extends CommonDao{
 			pstmt.setString(1, qna.getTitle());
 			pstmt.setString(2, qna.getQuestion());
 			pstmt.setString(3, qna.getWriter());
+			pstmt.executeUpdate();
+			System.out.println("질문하기 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -96,6 +98,7 @@ public class QnaDao extends CommonDao{
 			pstmt.setString(2, qna.getQuestion());
 			pstmt.setString(3, qna.getWriter());
 			pstmt.setInt(4, qna.getNo());
+			pstmt.executeUpdate();
 			System.out.println("질문수정 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,7 +119,28 @@ public class QnaDao extends CommonDao{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna.getAnswer());
 			pstmt.setInt(2, qna.getNo());
+			pstmt.executeUpdate();
 			System.out.println("답변하기|수정 성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(conn != null)conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void delete(int no) {
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = "delete from qna where no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			System.out.println("질문삭제 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
