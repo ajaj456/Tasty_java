@@ -5,10 +5,11 @@ public class Qna {
 	private int no;
 	private String title, question, answer, writer, wdate;
 	private int hit;
-	public Qna(int no, String title, String question, String writer, String wdate, int hit) {
+	public Qna(int no, String title, String question, String answer, String writer, String wdate, int hit) {
 		this.no = no;
 		this.title = title;
 		this.question = question;
+		this.answer = answer;
 		this.writer = writer;
 		this.wdate = wdate;
 		this.hit = hit;

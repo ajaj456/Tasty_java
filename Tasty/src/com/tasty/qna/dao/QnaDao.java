@@ -35,12 +35,12 @@ public class QnaDao extends CommonDao{
 		try {
 			
 			conn = DriverManager.getConnection(url, id, pw);
-			String sql = "select no, title, question, wdate, writer, hit from qna order by no desc";
+			String sql = "select no, title, question, answer, to_char(wdate, 'yyyy-mm-dd') wdate, writer, hit from qna order by no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			list = new ArrayList<Qna>();
 			while(rs.next()) {
-				list.add(new Qna(rs.getInt("no"), rs.getString("title"), rs.getString("question"), rs.getString("wdate"), rs.getString("writer"), rs.getInt("hit")));
+				list.add(new Qna(rs.getInt("no"), rs.getString("title"), rs.getString("question"), rs.getString("answer"), rs.getString("wdate"), rs.getString("writer"), rs.getInt("hit")));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -7,9 +7,14 @@ import com.tasty.qna.model.Qna;
 public class PrintQna {
 
 	public void printList(Object obj) {
-		List<Qna> list = (List<Qna>)obj;
-		for(Qna qna : list)
-			System.out.println(qna);
+		List<Qna> list = (List<Qna>) obj;
+		System.out.println("| 글번호 | 글제목 | 작성일 | 작성자 | 조회수 |");
+		for (Qna qna : list) {
+			System.out.print("| " + qna.getNo() + " | " + qna.getTitle());
+			if (qna.getAnswer() != null)
+				System.out.print("(답변)");
+			System.out.print(" | " + qna.getWriter() + " | " + qna.getWdate() + " | " + qna.getHit() + " |");
+		}
 	}
 
 	public void printView(Qna qna) {

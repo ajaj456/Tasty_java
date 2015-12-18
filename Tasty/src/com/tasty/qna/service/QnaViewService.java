@@ -22,20 +22,20 @@ public class QnaViewService implements ServiceInterface {
 			switch(Input.inputInt()) {
 			case 1:
 				// 질문수정
-				service = new QnaListService();
-				service.service(null);
+//				service = new QnaUpdateService();
+//				service.service(null);
 				break;
 			
 			case 2:
 				// 질문삭제
-				service = new QnaViewService();
-				service.service(null);
+//				service = new QnaDeleteService();
+//				service.service(null);
 				break;
 				
 			case 3:
 				// 답변하기
-				service = new QnaWriteService();
-				service.service(null);
+//				service = new QnaReplyService();
+//				service.service(null);
 				break;
 				
 			case 0:
