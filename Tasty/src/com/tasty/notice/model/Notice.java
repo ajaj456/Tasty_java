@@ -52,11 +52,10 @@ public class Notice {
 		this.endDate = endDate;
 	}
 
-	public Notice(int no, String title, String content, String wdate, String startDate, String endDate) {
+	public Notice(int no, String title, String wdate, String startDate, String endDate) {
 		super();
 		this.no = no;
 		this.title = title;
-		this.content = content;
 		this.wdate = wdate;
 		this.startDate = startDate;
 		this.endDate = endDate;
