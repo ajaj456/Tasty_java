@@ -10,7 +10,7 @@ public class NoticeDao extends CommonDao{
 		
 	}
 
-	public Object view() {
+	public Object view(int no) {
 		// TODO Auto-generated method stub
 		return null;
 	}

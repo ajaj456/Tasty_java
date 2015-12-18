@@ -1,5 +1,6 @@
-package com.tasty.notice.model;
+package com.tasty.notice.view;
 
+import com.tasty.notice.model.Notice;
 import com.tasty.util.Input;
 
 public class InputNotice {
@@ -13,5 +14,5 @@ public class InputNotice {
 		notice.setEndDate(Input.inputString("마감날짜"));
 		return null;
 	}
-	
+
 }

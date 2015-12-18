@@ -2,7 +2,7 @@ package com.tasty.notice.sevice;
 
 import com.tasty.controller.ServiceInterface;
 
-public class NoticeNewListService implements ServiceInterface {
+public class NoticeUpdateService implements ServiceInterface {
 
 	@Override
 	public Object service(Object obj) {

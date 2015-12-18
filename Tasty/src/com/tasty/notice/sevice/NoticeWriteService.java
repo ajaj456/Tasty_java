@@ -2,8 +2,8 @@ package com.tasty.notice.sevice;
 
 import com.tasty.controller.ServiceInterface;
 import com.tasty.notice.dao.NoticeDao;
-import com.tasty.notice.model.InputNotice;
 import com.tasty.notice.model.Notice;
+import com.tasty.notice.view.InputNotice;
 
 public class NoticeWriteService implements ServiceInterface {
 

@@ -2,10 +2,7 @@ package com.tasty.notice.controller;
 
 import com.tasty.controller.ControllerInterface;
 import com.tasty.controller.ServiceInterface;
-import com.tasty.notice.sevice.NoticeAllListService;
 import com.tasty.notice.sevice.NoticeListService;
-import com.tasty.notice.sevice.NoticeNewListService;
-import com.tasty.notice.sevice.NoticeOldListService;
 import com.tasty.notice.sevice.NoticeViewService;
 import com.tasty.notice.sevice.NoticeWriteService;
 import com.tasty.util.Input;
@@ -18,13 +15,13 @@ public class NoticeController implements ControllerInterface {
 	public void process() {
 		while (true) {
 			Print.printTitle("오늘의 맛집", "*");
-			Print.printMenu("1. 맛집리스트\t2. 맛집보기\n3. 맛집추가\t4. 지난 맛집\n5. 예약 맛집\t6. 모든 맛집\n0. 이전 메뉴");
+			Print.printMenu("1. 맛집리스트\t2. 맛집보기\n3. 맛집추가\t4. 지난 맛집\n5. 새로운 맛집\t6. 모든 맛집\n0. 이전 메뉴");
 
 			switch (Input.inputInt()) {
 			case 1:
 				// 맛집리스트
 				service = new NoticeListService();
-				service.service(null);
+				service.service("now");
 				break;
 			case 2:
 				// 맛집보기
@@ -38,17 +35,17 @@ public class NoticeController implements ControllerInterface {
 				break;
 			case 4:
 				// 지난 맛집
-				service = new NoticeOldListService();
+				service = new NoticeListService();
 				service.service("old");
 				break;
 			case 5:
-				// 예약 맛집
-				service = new NoticeNewListService();
+				// 새로운 맛집
+				service = new NoticeListService();
 				service.service("new");
 				break;
 			case 6:
 				// 모든 맛집
-				service = new NoticeAllListService();
+				service = new NoticeListService();
 				service.service("all");
 				break;
 			case 0:
