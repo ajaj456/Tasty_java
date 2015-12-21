@@ -1,6 +1,7 @@
 package com.tasty.qna.service;
 
 import com.tasty.controller.ServiceInterface;
+import com.tasty.member.model.Login;
 import com.tasty.qna.dao.QnaDao;
 import com.tasty.qna.model.Qna;
 import com.tasty.qna.service.QnaDeleteService;
@@ -27,13 +28,19 @@ public class QnaViewService implements ServiceInterface {
 			case 1:
 				// 질문수정
 				service = new QnaUpdateService();
-				service.service(qna);
+				if (qna.getWriter().equals(Login.name))
+					service.service(qna);
+				else
+					System.out.println("작성자만 수정할 수 있습니다.");
 				break;
 			
 			case 2:
 				// 질문삭제
 				service = new QnaDeleteService();
-				service.service(qna.getNo());
+				if (qna.getWriter().equals(Login.name))
+					service.service(qna.getNo());
+				else
+					System.out.println("작성자만 삭제할 수 있습니다.");
 				return null;
 				
 			case 3:

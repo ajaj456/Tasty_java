@@ -1,5 +1,6 @@
 package com.tasty.view.qna;
 
+import com.tasty.member.model.Login;
 import com.tasty.qna.model.Qna;
 import com.tasty.util.Input;
 
@@ -9,14 +10,16 @@ public class InputQna {
 		Qna qna = new Qna();
 		qna.setTitle(Input.inputString("질문제목"));
 		qna.setQuestion(Input.inputString("질문내용"));
-		qna.setWriter(Input.inputString("작성자"));
+		if(Login.id != null)
+			qna.setWriter(Login.name);
+		else
+			qna.setWriter(Input.inputString("작성자"));
 		return qna;
 	}
 
 	public void inputUpdateData(Qna qna) {
 		qna.setTitle(Input.inputString("질문제목"));
 		qna.setQuestion(Input.inputString("질문내용"));
-		qna.setWriter(Input.inputString("작성자"));
 		return;
 	}
 
