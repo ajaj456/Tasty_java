@@ -25,6 +25,12 @@ public class MemberViewService implements ServiceInterface {
 		
 		while(true) {
 			member = dao.view(id);
+			
+			if(member == null) {
+				System.out.println("해당하는 정보가 없습니다.");
+				return null;
+			}
+			
 			out.print(member);
 			
 			String menu;

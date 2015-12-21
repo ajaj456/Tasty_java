@@ -340,4 +340,39 @@ public class MemberDao extends CommonDao {
 		}
 		return 0;
 	}
+
+	public String updatePwCheck(String userId) {
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			
+			String sql = "select pw from member where id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getString("pw");
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 }
