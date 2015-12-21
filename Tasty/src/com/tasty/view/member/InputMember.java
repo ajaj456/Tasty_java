@@ -15,22 +15,17 @@ public class InputMember {
 		return new Member(id, pw, name, birth, tel, email);
 	}
 	
-	public Member inputUpdateMember() {
-		String id = Input.inputString("아이디");
+	public Member inputUpdateMember(Member member) {
 		String name = Input.inputString("이름");
 		String birth = Input.inputString("생일");
 		String tel = Input.inputString("연락처");
 		String email = Input.inputString("이메일");
 		
-		return new Member(id, name, birth, tel, email);
-	}
-	
-	public Member inputUpdateMember(String id) {
-		String name = Input.inputString("이름");
-		String birth = Input.inputString("생일");
-		String tel = Input.inputString("연락처");
-		String email = Input.inputString("이메일");
+		member.setName(name);
+		member.setBirth(birth);
+		member.setTel(tel);
+		member.setEmail(email);
 		
-		return new Member(id, name, birth, tel, email);
+		return member;
 	}
 }

@@ -30,12 +30,12 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
-				if(pstmt != null)
-					pstmt.close();
 				if(rs != null)
 					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -64,12 +64,12 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
-				if(pstmt != null)
-					pstmt.close();
 				if(rs != null)
 					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -99,12 +99,12 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
-				if(pstmt != null)
-					pstmt.close();
 				if(rs != null)
 					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -117,7 +117,7 @@ public class MemberDao extends CommonDao {
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
 			
-			String sql = "select id, pw, name, to_char(birth, 'yyyy-mm-dd') birth, tel, email, grade from member";
+			String sql = "select id, pw, name, to_char(birth, 'yyyy-mm-dd') birth, tel, email, grade from member where not grade=9";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -135,12 +135,12 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
-				if(pstmt != null)
-					pstmt.close();
 				if(rs != null)
 					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -171,10 +171,10 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
 				if(pstmt != null)
 					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -202,12 +202,12 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
-				if(pstmt != null)
-					pstmt.close();
 				if(rs != null)
 					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -266,10 +266,10 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
 				if(pstmt != null)
 					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -277,35 +277,42 @@ public class MemberDao extends CommonDao {
 		}
 	}
 	
-	public void deleteCheck(String userId, String userPw) {
+	public String deleteCheck(String userId) {
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
 			
-			String sql = "select from ";
+			String sql = "select pw from member where id=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userId);
 			
-			pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getString("pw");
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
+				if(rs != null)
+					rs.close();
 				if(pstmt != null)
 					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 	
-	public void delete(String userId, String userPw) {
+	public void delete(String userId) {
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
 			
@@ -322,10 +329,10 @@ public class MemberDao extends CommonDao {
 		}
 		finally {
 			try {
-				if(conn != null)
-					conn.close();
 				if(pstmt != null)
 					pstmt.close();
+				if(conn != null)
+					conn.close();
 			}
 			catch (Exception e) {
 				e.printStackTrace();
