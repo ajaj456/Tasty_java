@@ -111,10 +111,8 @@ public class BoardDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -126,29 +124,22 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 
 		try {
-			// 1. 드라이버 확인
+			
 			Class.forName(driver);
-			// 2. DB 연결
 			conn = DriverManager.getConnection(url, id, pw);
-			// 3. sql작성
 			String sql = "delete from board where no =?";
-			// 4. 상태 - 데이터 세팅
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			// 5. 실행
 			pstmt.executeUpdate();
-			// 6. 표시
 			System.out.println("삭제 성공");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
 			try {
-				// 7. 닫기
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
+				
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -160,31 +151,25 @@ public class BoardDAO {
 	public void write(Board board) {
 		// TODO Auto-generated method stub
 		try {
-			// 1.드라이버 확인
+			
 			Class.forName(driver);
-			// 2.DB연결
+			
 			conn = DriverManager.getConnection(url, id, pw);
-			// 3.sql 작성
+			
 			String sql = "insert into board( " + " no,title,content,writer) " + " values(board_seq.nextval,"
 					+ " ?,?,?)";
-			// 4. 실행상태 확인 및 데이터 세팅
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getContent());
 			pstmt.setString(3, board.getWriter());
-			// 5. 실행
 			pstmt.executeUpdate();
-			// 6.표시
 			Print.printTitle("글쓰기 성공", "=");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				// 7. 닫기
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
