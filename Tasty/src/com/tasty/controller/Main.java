@@ -6,6 +6,7 @@ import com.tasty.member.model.Login;
 import com.tasty.member.service.FindService;
 import com.tasty.member.service.LoginService;
 import com.tasty.member.service.LogoutService;
+import com.tasty.member.service.MemberWriteService;
 import com.tasty.notice.controller.NoticeController;
 import com.tasty.qna.controller.QnaController;
 import com.tasty.util.Input;
@@ -70,8 +71,14 @@ public class Main {
 				
 			case 5:
 				// 회원관리
-				controller = new MemberController();
-				controller.process();
+				if(Login.id != null) {
+					controller = new MemberController();
+					controller.process();
+				}
+				else {
+					service = new MemberWriteService();
+					service.service(null);
+				}
 				break;
 				
 			case 6:

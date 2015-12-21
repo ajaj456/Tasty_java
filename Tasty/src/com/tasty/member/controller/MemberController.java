@@ -39,7 +39,11 @@ public class MemberController implements ControllerInterface {
 			case 2:
 				// 정보보기
 				service = new MemberViewService();
-				service.service(null);
+				if(Login.grade == 9) {
+					service.service(null);
+				}
+				else
+					service.service(Login.id);
 				break;
 				
 			case 3:

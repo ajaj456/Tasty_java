@@ -12,13 +12,22 @@ public class Member {
 	public Member() {
 	}
 
-	public Member(String id, String pw, String name, String birth, String tel, String email, int grade) {
-		this.id = id;
-		this.pw = pw;
+	public Member(String id, String name, String birth, String tel, String email) {
 		this.name = name;
 		this.birth = birth;
 		this.tel = tel;
 		this.email = email;
+		this.id = id;
+	}
+	
+	public Member(String id, String pw, String name, String birth, String tel, String email) {
+		this(id, name, birth, tel, email);
+		this.id = id;
+		this.pw = pw;
+	}
+	
+	public Member(String id, String pw, String name, String birth, String tel, String email, int grade) {
+		this(id, pw, name, birth, tel, email);
 		this.grade = grade;
 	}
 
