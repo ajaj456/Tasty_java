@@ -26,7 +26,7 @@ public class PrintBoard{
 		@SuppressWarnings("unchecked")
 		ArrayList<Board> list = (ArrayList<Board>)obj;
 		for (Board board : list) {
-			System.out.println("|" + board.getNo() + " | " + board.getTitle() +  " | " + board.getContent()+" | " + board.getWdate() + " | "
+			System.out.println("|" + board.getNo() + " | " + board.getTitle() + " | " + board.getWdate() + " | "
 					+ board.getHit() + "|");
 		}
 
