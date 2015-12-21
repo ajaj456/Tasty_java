@@ -21,7 +21,7 @@ public class NoticeViewService implements ServiceInterface {
 		Print.printMenu("1. 글수정\t2. 글삭제\n0. 이전 메뉴");
 			switch (Input.inputInt()) {
 			case 1:
-				// 맛집리스트
+				// 글수정
 				service = new NoticeUpdateService();
 				service.service(no);
 				break;

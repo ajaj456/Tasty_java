@@ -1,4 +1,4 @@
-package com.tasty.notice.view;
+package com.tasty.view.notice;
 
 import com.tasty.notice.model.Notice;
 import com.tasty.util.Input;

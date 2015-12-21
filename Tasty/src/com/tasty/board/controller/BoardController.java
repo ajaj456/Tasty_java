@@ -25,7 +25,6 @@ public class BoardController implements ControllerInterface {
 			Print.printMenu("1. 글리스트\t2. 글보기\n3. 글쓰기\n0. 이전 메뉴");
 			PrintBoard out = null;
 			Object obj = null;
-			
 			switch(new Input().inputInt()) {
 			case 1:
 				// 글리스트
