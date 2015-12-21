@@ -92,7 +92,7 @@ public class QnaDao extends CommonDao{
 	public void update(Qna qna) {
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
-			String sql = "update qna set title = ?, question = ?, writer = ? where no = ?)";
+			String sql = "update qna set title = ?, question = ?, writer = ? where no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna.getTitle());
 			pstmt.setString(2, qna.getQuestion());

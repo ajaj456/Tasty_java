@@ -20,6 +20,10 @@ public class InputQna {
 	public void inputUpdateData(Qna qna) {
 		qna.setTitle(Input.inputString("질문제목"));
 		qna.setQuestion(Input.inputString("질문내용"));
+		if(Login.id != null)
+			qna.setWriter(Login.name);
+		else
+			qna.setWriter(Input.inputString("작성자"));
 		return;
 	}
 
