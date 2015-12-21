@@ -11,12 +11,13 @@ public class MemberDeleteService implements ServiceInterface {
 		MemberDao dao = new MemberDao();
 		Member member = (Member) obj;
 		String pw;
+		int state = 0;
 		
 		pw = Input.inputString("비밀번호");
 		
 		if(pw.equals(dao.deleteCheck(member.getId())))
-			dao.delete(member.getId());
+			state = dao.delete(member.getId());
 		
-		return null;
+		return state;
 	}
 }

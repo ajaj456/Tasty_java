@@ -9,9 +9,6 @@ public class LogoutService implements ServiceInterface{
 		Login.id = null;
 		Login.name = null;
 		Login.grade = 0;
-		
-		System.out.println("로그아웃 되었습니다");
-		
 		return null;
 	}
 }

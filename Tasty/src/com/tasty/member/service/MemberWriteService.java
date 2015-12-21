@@ -16,6 +16,6 @@ public class MemberWriteService implements ServiceInterface {
 		
 		dao.write(member);
 		
-		return null;
+		return member;
 	}
 }

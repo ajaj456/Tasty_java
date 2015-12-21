@@ -312,7 +312,7 @@ public class MemberDao extends CommonDao {
 		return null;
 	}
 	
-	public void delete(String userId) {
+	public int delete(String userId) {
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
 			
@@ -322,7 +322,7 @@ public class MemberDao extends CommonDao {
 			
 			pstmt.setString(1, userId);
 			
-			pstmt.executeUpdate();
+			return pstmt.executeUpdate();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -338,5 +338,6 @@ public class MemberDao extends CommonDao {
 				e.printStackTrace();
 			}
 		}
+		return 0;
 	}
 }

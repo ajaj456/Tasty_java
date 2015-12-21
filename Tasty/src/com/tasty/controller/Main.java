@@ -3,6 +3,7 @@ package com.tasty.controller;
 import com.tasty.board.controller.BoardController;
 import com.tasty.member.controller.MemberController;
 import com.tasty.member.model.Login;
+import com.tasty.member.model.Member;
 import com.tasty.member.service.FindService;
 import com.tasty.member.service.LoginService;
 import com.tasty.member.service.LogoutService;
@@ -75,7 +76,7 @@ public class Main {
 				if(Login.id != null) {
 					if(Login.grade == 9) {
 						controller = new MemberController();
-						controller.process();						
+						controller.process();
 					}
 					else {
 						service = new MemberViewService();
@@ -84,7 +85,9 @@ public class Main {
 				}
 				else {
 					service = new MemberWriteService();
-					service.service(null);
+					Member member = (Member) service.service(null);
+					service = new LoginService();
+					service.service(member);
 				}
 				break;
 				

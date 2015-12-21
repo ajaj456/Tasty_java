@@ -49,7 +49,12 @@ public class MemberViewService implements ServiceInterface {
 				
 			case 3:
 				service = new MemberDeleteService();
-				service.service(member);
+				int state = (Integer) service.service(member);
+				
+				if(state == 1) {
+					service = new LogoutService();
+					service.service(null);
+				}
 				return null;
 				
 			case 0:
