@@ -11,6 +11,7 @@ public class NoticeWriteService implements ServiceInterface {
 	public Object service(Object obj) {
 		NoticeDao dao = new NoticeDao(); 
 		InputNotice in = new InputNotice();
+		System.out.println("\n새로 작성할 글을 입력해주세요.");
 		Notice notice = in.inputWrite();
 		dao.write(notice);
 		return null;

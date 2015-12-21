@@ -13,9 +13,9 @@ public class NoticeViewService implements ServiceInterface {
 	public Object service(Object obj) {
 		NoticeDao dao = new NoticeDao();
 		int no = Input.inputInt("글번호를 입력해주세요");
+		while (true) {
 		obj = dao.view(no);
 		PrintView out = new PrintView();
-		while (true) {
 		out.print(obj);
 		Print.printTitle("메뉴", "*");
 		Print.printMenu("1. 글수정\t2. 글삭제\n0. 이전 메뉴");

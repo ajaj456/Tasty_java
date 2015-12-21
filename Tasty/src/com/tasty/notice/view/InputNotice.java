@@ -12,7 +12,7 @@ public class InputNotice {
 		notice.setContent(Input.inputString("글내용"));
 		notice.setStartDate(Input.inputString("시작날짜"));
 		notice.setEndDate(Input.inputString("마감날짜"));
-		return null;
+		return notice;
 	}
 
 }

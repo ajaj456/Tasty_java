@@ -62,7 +62,7 @@ public class NoticeDao extends CommonDao {
 			}
 		}
 
-		return list;
+		return null;
 	}
 
 	public Object view(int no) {
@@ -104,7 +104,82 @@ public class NoticeDao extends CommonDao {
 
 	public void write(Notice notice) {
 		// TODO Auto-generated method stub
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = " insert into notice(no,title,content,startDate,endDate) values(notice_seq.nextval,?,?,?,?) ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setString(3, notice.getStartDate());
+			pstmt.setString(4, notice.getEndDate());
+			pstmt.executeUpdate();
+			System.out.println("글이 성공적으로 작성되었습니다.\n");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	} // end of write()
 
-	}
+	public void update(Notice notice, int no) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = " update notice set title = ?, content = ?, startDate = ?, endDate = ? where no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setString(3, notice.getStartDate());
+			pstmt.setString(4, notice.getEndDate());
+			pstmt.setInt(5, no);
+			pstmt.executeUpdate();
+			System.out.println("수정이 되었습니다.\n");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	} // end of update()
 
+	public void delete(int no) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DriverManager.getConnection(url, id, pw);
+			String sql = "delete from notice where no =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			System.out.println("\n글이 삭제되었습니다." + "\n이전메뉴로 돌아갑니다.\n");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	} // end of delete()
 }
