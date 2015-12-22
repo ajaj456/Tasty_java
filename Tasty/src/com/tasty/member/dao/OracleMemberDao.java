@@ -20,9 +20,9 @@ public class OracleMemberDao extends MemberDao {
 
 			ArrayList<Member> list = new ArrayList<Member>();
 			
-			while(rs.next())
+			while(rs.next()) {
 				list.add(new Member(rs.getString("id"), rs.getString("pw"), rs.getString("name"), rs.getString("birth"), rs.getString("tel"), rs.getString("email"), rs.getInt("grade")));
-			
+			}
 			return list;
 		}
 		catch (Exception e) {

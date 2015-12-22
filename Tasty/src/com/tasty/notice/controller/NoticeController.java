@@ -5,6 +5,7 @@ package com.tasty.notice.controller;
 
 import com.tasty.controller.ControllerInterface;
 import com.tasty.controller.ServiceInterface;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.member.model.Login;
 import com.tasty.notice.sevice.NoticeListService;
 import com.tasty.notice.sevice.NoticeViewService;
@@ -31,7 +32,13 @@ public class NoticeController implements ControllerInterface {
 			// 관리자가 아니면 기본 메뉴리스트만 나온다.
 			PrintNotice out = null; // 객체생성
 			Object obj = null; // 변수선언
-			switch (Input.inputInt()) { // 메뉴선택을 입력받음.
+			int num = -1;
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			switch (num) { // 메뉴선택을 입력받음.
 			case 1: // 현재공지되고 있는 맛집리스트
 				service = new NoticeListService(); // 생성
 				obj = service.service("now"); // ()호출 및 변수에 저장

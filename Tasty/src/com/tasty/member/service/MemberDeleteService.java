@@ -17,7 +17,8 @@ public class MemberDeleteService implements ServiceInterface {
 		pw = Input.inputString("비밀번호");
 		
 		if(pw.equals(dao.deleteCheck(member.getId())))
-			state = dao.delete(member.getId());
+			if(Input.inputString("탈퇴하시겠습니까?(y/n)").equals("y"))
+				state = dao.delete(member.getId());
 		
 		return state;
 	}

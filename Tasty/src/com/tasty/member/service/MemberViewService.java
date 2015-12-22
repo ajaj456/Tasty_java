@@ -2,6 +2,7 @@ package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.MemberNotFoundException;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.member.dao.MemberDao;
 import com.tasty.member.dao.OracleMemberDao;
 import com.tasty.member.model.Login;
@@ -45,7 +46,14 @@ public class MemberViewService implements ServiceInterface {
 			Print.printTitle("회원관리", "*");
 			Print.printMenu(menu + "\t2. 비밀번호 변경\n3. 회원탈퇴\n0. 이전 메뉴");
 			
-			switch(Input.inputInt()) {
+			int num = -1;
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			switch(num) {
 			case 1:
 				service = new MemberUpdateService();
 				service.service(member);

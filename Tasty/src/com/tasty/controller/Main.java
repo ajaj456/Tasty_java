@@ -1,6 +1,7 @@
 package com.tasty.controller;
 
 import com.tasty.board.controller.BoardController;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.member.controller.MemberController;
 import com.tasty.member.model.Login;
 import com.tasty.member.model.Member;
@@ -40,7 +41,14 @@ public class Main {
 			Print.printTitle("맛집을 찾아서", "*");
 			Print.printMenu(menu1 + "\t2. 오늘의 맛집\n3. 맛집 이야기\t4. 질문게시판\n" + menu2 + "\n0. 종료");
 			
-			switch(Input.inputInt()) {
+			int num = -1;
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			switch(num) {
 			case 1:
 				// 로그인/로그아웃
 				if(Login.id != null) {

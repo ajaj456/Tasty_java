@@ -17,11 +17,13 @@ public abstract class MemberDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	// 오라클Dao를 위한 추상메소드 정의
 	public abstract ArrayList<Member> list();
 	public abstract void write(Member member);
 	
 	public Login login(String loginId, String loginPw) {
 		try {
+			// 
 			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			
 			String sql = "select * from member where id=? and pw=?";

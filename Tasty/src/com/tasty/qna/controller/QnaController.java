@@ -2,6 +2,7 @@ package com.tasty.qna.controller;
 
 import com.tasty.controller.ControllerInterface;
 import com.tasty.controller.ServiceInterface;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.qna.service.QnaListService;
 import com.tasty.qna.service.QnaViewService;
 import com.tasty.qna.service.QnaWriteService;
@@ -16,7 +17,13 @@ public class QnaController implements ControllerInterface {
 			Print.printTitle("질문게시판", "*");
 			Print.printMenu("1. 글리스트\t2. 질문보기\n3. 질문하기\n0. 이전 메뉴");
 			
-			switch(Input.inputInt()) {
+			int num = -1;
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			switch(num) {
 			case 1:
 				// 글리스트 - 호출, 생성
 				service = new QnaListService();

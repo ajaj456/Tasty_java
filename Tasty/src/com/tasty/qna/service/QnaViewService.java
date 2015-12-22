@@ -2,6 +2,7 @@ package com.tasty.qna.service;
 
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.QnaNotFoundException;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.member.model.Login;
 import com.tasty.qna.dao.OracleQnaDao;
 import com.tasty.qna.dao.QnaDao;
@@ -14,9 +15,10 @@ public class QnaViewService implements ServiceInterface {
 
 	@Override
 	public Object service(Object obj) {
-		System.out.print("질문번호: ");
 		QnaDao dao = new OracleQnaDao();
-		Qna qna = dao.view(Input.inputInt());	// Input.inputInt()로 입력된 숫자를 dao.view()가 받아 해당되는
+		int no = -1;
+		no = Input.inputInt("질문번호");
+		Qna qna = dao.view(no);	// Input.inputInt()로 입력된 숫자를 dao.view()가 받아 해당되는
 												// 글 번호의 Qna 타입 데이터를 불러와 qna에 대입
 		try {
 			checkQna(qna);	// 해당 번호의 qna 내용물이 있는지 확인, 없으면 오류
@@ -29,8 +31,14 @@ public class QnaViewService implements ServiceInterface {
 			PrintQna out = new PrintQna();
 			out.printView(qna);	// qna의 내용을 화면에 표시
 			ServiceInterface service = null;
-			Print.printMenu("1. 질문수정\t2. 질문삭제\n3. 답변하기|수정\n0. 이전 메뉴");			
-			switch(Input.inputInt()) {
+			Print.printMenu("1. 질문수정\t2. 질문삭제\n3. 답변하기|수정\n0. 이전 메뉴");
+			int num = -1;
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			switch(num) {
 			case 1:
 				// 질문수정
 				service = new QnaUpdateService();
