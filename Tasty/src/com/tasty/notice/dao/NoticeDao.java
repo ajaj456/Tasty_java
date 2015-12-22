@@ -1,3 +1,6 @@
+/*
+ * DB에 직접적으로 접근해서 데이터를 교류하는 클래스
+ */
 package com.tasty.notice.dao;
 
 import java.sql.Connection;
@@ -29,7 +32,8 @@ public abstract class NoticeDao { //  이 클래스는 OracleNoticeDao에 상속
 			// 드라이버 연결
 			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			// sql문장
-			String sql = "select no, title, content, to_char(wdate,'yyyy-mm-dd')wdate, to_char(startdate,'yyyy-mm-dd')startdate, "
+			String sql = "select no, title, content, to_char(wdate,'yyyy-mm-dd')wdate, "
+					+ " to_char(startdate,'yyyy-mm-dd')startdate, "
 					+ "to_char(enddate,'yyyy-mm-dd')enddate from notice where no = ?";
 			// 상태 실행및 데이터 입력
 			pstmt = conn.prepareStatement(sql);

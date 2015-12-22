@@ -15,7 +15,8 @@ public class OracleNoticeDao extends NoticeDao {// 공통적으로 사용되는 
 			// 드라이버 연결
 			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			// sql문장
-			String sql = "select no, title, to_char(wdate,'yyyy-mm-dd')wdate, to_char(startdate,'yyyy-mm-dd')startdate, "
+			String sql = "select no, title, to_char(wdate,'yyyy-mm-dd')wdate, "
+					+ " to_char(startdate,'yyyy-mm-dd')startdate, "
 					+ " to_char(enddate,'yyyy-mm-dd')enddate from notice ";
 			// 파라메터값에 따른 처리를 위한 switch문
 			switch ((String) obj) {
