@@ -38,7 +38,7 @@ public class Main {
 				menu2 = "5. 회원가입\n6. 아이디 찾기\t7. 비밀번호 찾기";
 			}
 			
-			Print.printTitle("맛집을 찾아서", "*");
+			Print.printTitle("동규의 이대 맛집", "*");
 			Print.printMenu(menu1 + "\t2. 오늘의 맛집\n3. 맛집 이야기\t4. 질문게시판\n" + menu2 + "\n0. 종료");
 			
 			int num = -1;
