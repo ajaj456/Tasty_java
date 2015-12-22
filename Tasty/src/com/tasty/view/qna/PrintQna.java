@@ -13,12 +13,12 @@ public class PrintQna {
 		for (Qna qna : list) {
 			System.out.print("| " + qna.getNo() + " | " + qna.getTitle());
 			if (qna.getAnswer() != null)
-				System.out.print("(답변)");
+				System.out.print("(답변)");	// Answer에 데이터가 채워져 있으면 글제목에 (답변)을 붙임
 			System.out.print(" | " + qna.getWriter() + " | " + qna.getWdate() + " | " + qna.getHit() + " |" + "\n");
 		}
 	}
 
-	public void printView(Qna qna) {
+	public void printView(Qna qna) {	// Qna의 내용을 전부 출력하기 위한 메소드
 		System.out.println("\n질문번호: " + qna.getNo());
 		System.out.println("질문제목: " + qna.getTitle());
 		System.out.println("질문내용: " + qna.getQuestion());
