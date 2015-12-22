@@ -62,7 +62,7 @@ public class QnaViewService implements ServiceInterface {
 		}
 	}
 
-	// QnaNotFoundException의 조건을 찾는 질문이 존재하지 않을 때로 설정
+	// QnaNotFoundException의 조건을 '찾는 질문이 존재하지 않을 때'로 설정
 	private void checkQna(Qna qna) throws QnaNotFoundException {	
 		if(qna == null)
 			throw new QnaNotFoundException();
