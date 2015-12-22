@@ -4,6 +4,7 @@ import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.NoticeNotFoundException;
 import com.tasty.member.model.Login;
 import com.tasty.notice.dao.NoticeDao;
+import com.tasty.notice.dao.OracleNoticeDao;
 import com.tasty.notice.model.Notice;
 import com.tasty.util.Input;
 import com.tasty.util.Print;
@@ -14,7 +15,7 @@ public class NoticeViewService implements ServiceInterface {
 
 	@Override
 	public Object service(Object obj) {
-		NoticeDao dao = new NoticeDao();
+		NoticeDao dao = new OracleNoticeDao();
 		Notice notice;
 		while (true) {
 			int no = Input.inputInt("글번호를 입력해주세요");
