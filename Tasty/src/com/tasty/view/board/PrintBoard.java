@@ -10,7 +10,7 @@ import com.tasty.board.model.Board;
 public class PrintBoard{
 	public void Print(Object obj) {
 		// TODO Auto-generated method stub
-		// 작업해야함
+		// 깔끔한 출력을 위한 메소드
 		Board board = (Board)obj;
 		System.out.println();
 		System.out.println("글번호:"+board.getNo());
@@ -24,6 +24,7 @@ public class PrintBoard{
 	public void printList(Object obj) {
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
+		// 깔끔한 출력을 위한 메소드
 		ArrayList<Board> list = (ArrayList<Board>)obj;
 		for (Board board : list) {
 			System.out.println("|" + board.getNo() + " | " + board.getTitle() + " | " + board.getWdate() + " | "
