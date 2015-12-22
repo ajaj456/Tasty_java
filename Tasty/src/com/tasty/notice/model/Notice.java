@@ -1,3 +1,7 @@
+/*
+ * notice의 정보가 담기는 클래스 
+ * 여기서는 no, title, content, wdate
+ */
 package com.tasty.notice.model;
 
 public class Notice {

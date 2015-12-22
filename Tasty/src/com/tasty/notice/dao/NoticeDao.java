@@ -72,7 +72,7 @@ public class NoticeDao {
 		return null;
 	}
 
-	public Object view(int no) {
+	public Notice view(int no) {
 		// TODO Auto-generated method stub
 		Notice notice = new Notice();
 		try {
@@ -89,6 +89,7 @@ public class NoticeDao {
 				notice.setWdate(rs.getString("Wdate"));
 				notice.setStartDate(rs.getString("Startdate"));
 				notice.setEndDate(rs.getString("enddate"));
+				return notice;
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -106,7 +107,7 @@ public class NoticeDao {
 				e.printStackTrace();
 			}
 		}
-		return notice;
+		return null;
 	}
 
 	public void write(Notice notice) {
