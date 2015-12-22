@@ -5,6 +5,7 @@ import com.tasty.board.dao.OracleBoardDao;
 import com.tasty.board.model.Board;
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.BoardNotFoundException;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.util.Input;
 import com.tasty.util.Print;
 import com.tasty.view.board.PrintBoard;
@@ -31,7 +32,15 @@ public class BoardViewService implements ServiceInterface {
 			Print.printTitle("메뉴", "*");
 			Print.printMenu("1. 글수정\t2. 글삭제\n0. 이전 메뉴");
 			//메뉴처리를 위한 switch문 
-			switch (Input.inputInt()) {
+			int num = -1;
+			
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			switch (num) {
 			case 1:
 				// 글수정
 				service = new BoardUpdateService();//생성
