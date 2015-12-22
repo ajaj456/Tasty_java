@@ -1,6 +1,10 @@
 package com.tasty.notice.dao;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,13 +12,16 @@ import com.tasty.common.CommonDao;
 import com.tasty.notice.model.Notice;
 import com.tasty.util.Print;
 
-public class NoticeDao extends CommonDao {
+public class NoticeDao {
+	Connection conn = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
 
 	public List<Notice> list(Object obj) {
-		// TODO Auto-generated method stub
 		List<Notice> list = null;
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "select no, title, to_char(wdate,'yyyy-mm-dd')wdate, to_char(startdate,'yyyy-mm-dd')startdate, "
 					+ " to_char(enddate,'yyyy-mm-dd')enddate from notice ";
 			switch ((String) obj) {
@@ -69,7 +76,7 @@ public class NoticeDao extends CommonDao {
 		// TODO Auto-generated method stub
 		Notice notice = new Notice();
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "select no, title, content, to_char(wdate,'yyyy-mm-dd')wdate, to_char(startdate,'yyyy-mm-dd')startdate, "
 					+ "to_char(enddate,'yyyy-mm-dd')enddate from notice where no = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -105,7 +112,7 @@ public class NoticeDao extends CommonDao {
 	public void write(Notice notice) {
 		// TODO Auto-generated method stub
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = " insert into notice(no,title,content,startDate,endDate) values(notice_seq.nextval,?,?,?,?) ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, notice.getTitle());
@@ -133,7 +140,7 @@ public class NoticeDao extends CommonDao {
 	public void update(Notice notice, int no) {
 		// TODO Auto-generated method stub
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = " update notice set title = ?, content = ?, startDate = ?, endDate = ? where no = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, notice.getTitle());
@@ -162,7 +169,7 @@ public class NoticeDao extends CommonDao {
 	public void delete(int no) {
 		// TODO Auto-generated method stub
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "delete from notice where no =?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);

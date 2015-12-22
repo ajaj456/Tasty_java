@@ -1,6 +1,6 @@
 package com.tasty.board.service;
 
-import com.tasty.board.dao.BoardDAO;
+import com.tasty.board.dao.BoardDao;
 import com.tasty.controller.ServiceInterface;
 
 import com.tasty.util.Input;
@@ -13,7 +13,7 @@ public class BoardViewService implements ServiceInterface {
 	ServiceInterface service = null;
 	@Override
 	public Object service(Object obj) {
-		BoardDAO dao =  new BoardDAO();
+		BoardDao dao =  new BoardDao();
 		int no = Input.inputInt("글번호를 입력하세요");
 		PrintBoard out = new PrintBoard();		
 		while (true) {

@@ -1,18 +1,26 @@
 package com.tasty.qna.dao;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tasty.common.CommonDao;
 import com.tasty.qna.model.Qna;
 
-public class QnaDao extends CommonDao{
+public class QnaDao {
+	Connection conn = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
 
 	public void write(Qna qna) {
 
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "insert into qna(no, title, question, writer) values(qna_seq.nextval, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna.getTitle());
@@ -35,7 +43,7 @@ public class QnaDao extends CommonDao{
 	public List<Qna> list() {
 		List<Qna> list = null;
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "select no, title, question, answer, to_char(wdate, 'yyyy-mm-dd') wdate, writer, hit from qna order by no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -60,7 +68,7 @@ public class QnaDao extends CommonDao{
 	public Qna view(int no) {
 		Qna qna = new Qna();
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "select no, title, question, answer, wdate, writer, hit from qna where no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
@@ -91,7 +99,7 @@ public class QnaDao extends CommonDao{
 
 	public void update(Qna qna) {
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "update qna set title = ?, question = ?, writer = ? where no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna.getTitle());
@@ -114,7 +122,7 @@ public class QnaDao extends CommonDao{
 
 	public void reply(Qna qna) {
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "update qna set answer = ?, where no = ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna.getAnswer());
@@ -135,7 +143,7 @@ public class QnaDao extends CommonDao{
 
 	public void delete(int no) {
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "delete from qna where no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
@@ -155,7 +163,7 @@ public class QnaDao extends CommonDao{
 
 	public void increase(int no) {
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			String sql = "update qna set hit = hit + 1 where no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
