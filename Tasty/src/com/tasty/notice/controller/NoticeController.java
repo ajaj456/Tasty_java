@@ -84,6 +84,8 @@ public class NoticeController implements ControllerInterface {
 			case 0:
 				// 이전 메뉴
 				return;
+				default :
+					System.out.println("\n메뉴번호를 확인해주세요.");
 			}
 		}
 	}
