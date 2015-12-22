@@ -1,3 +1,6 @@
+/*
+ * 데이터를 입력받기 위한 클래스
+ */
 package com.tasty.view.notice;
 
 import com.tasty.notice.model.Notice;

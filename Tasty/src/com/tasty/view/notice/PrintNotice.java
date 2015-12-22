@@ -1,3 +1,6 @@
+/*
+ * 데이터를 출력하기 위한 클래스
+ */
 package com.tasty.view.notice;
 
 import java.util.ArrayList;
@@ -7,7 +10,7 @@ import com.tasty.notice.model.Notice;
 public class PrintNotice {
 	public void Print(Object obj) {
 		// TODO Auto-generated method stub
-		// 작업해야함
+		// 글보기를 깔끔하게 보이기 위한 메소드
 		Notice notice = (Notice) obj;
 		System.out.println();
 		System.out.println("글번호:" + notice.getNo());
@@ -20,7 +23,7 @@ public class PrintNotice {
 
 	}
 
-	public void printList(Object obj) {
+	public void printList(Object obj) { // 글리스트를 깔끔하게 출력하기 위한 메소드 
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
 		ArrayList<Notice> list = (ArrayList<Notice>) obj;
