@@ -1,6 +1,7 @@
 package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
+import com.tasty.exception.MemberNotFoundException;
 import com.tasty.member.dao.MemberDao;
 import com.tasty.member.model.Login;
 import com.tasty.member.model.Member;
@@ -26,8 +27,9 @@ public class MemberViewService implements ServiceInterface {
 		while(true) {
 			member = dao.view(id);
 			
-			if(member == null) {
-				System.out.println("해당하는 정보가 없습니다.");
+			try {
+				checkNull(member); // 멤버
+			} catch (MemberNotFoundException e) {
 				return null;
 			}
 			
@@ -67,5 +69,10 @@ public class MemberViewService implements ServiceInterface {
 				return null;
 			}
 		}
+	}
+
+	private void checkNull(Member member) throws MemberNotFoundException {
+		if(member == null)
+			throw new MemberNotFoundException();
 	}
 }
