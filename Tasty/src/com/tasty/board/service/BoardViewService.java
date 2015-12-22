@@ -20,6 +20,7 @@ public class BoardViewService implements ServiceInterface {
 		int no = Input.inputInt("글번호를 입력하세요");
 		PrintBoard out = new PrintBoard();
 		while (true) {
+			dao.increase(no);
 			Board board = dao.view(no); 
 			//없는 글번호를 호출하면 오류메세지가 아닌 다른 메세지를 호출하게 하는 익셉션 처리
 			try {

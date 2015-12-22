@@ -116,4 +116,40 @@ public abstract class BoardDao {
 		}
 
 	}
+	public void increase(int no) {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		// 사용할 정보를 정의한다. - 전역변수
+		try {
+			// 1. 드라이버 확인
+			Class.forName(CommonDao.driver);
+			// 2. DB 연결
+			con = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
+			// 3. sql작성
+			String sql = "update board set "
+			+ " hit = hit + 1 where no =?";
+			// 4. 상태 - 데이터 세팅
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			// 5. 실행
+			pstmt.executeUpdate();
+			// 6. 표시
+			//System.out.println("조횟수 + 1");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				// 7. 닫기
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
 }
