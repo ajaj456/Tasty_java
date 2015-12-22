@@ -13,9 +13,9 @@ public class NoticeListService implements ServiceInterface {
 	public Object service(Object obj) {
 		// TODO Auto-generated method stub
 		
-		NoticeDao dao = new OracleNoticeDao();
-		List<Notice> list=dao.list(obj);
-		listGuideline();
+		NoticeDao dao = new OracleNoticeDao(); // 생성 및 호출
+		List<Notice> list=dao.list(obj); // list()에서 생긴 결과값을 list에 저장
+		listGuideline(); // 호출
 		return list;
 	}
 
