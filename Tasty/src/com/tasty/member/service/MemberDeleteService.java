@@ -1,14 +1,14 @@
 package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
-import com.tasty.member.dao.MemberDao;
+import com.tasty.member.dao.OracleMemberDao;
 import com.tasty.member.model.Member;
 import com.tasty.util.Input;
 
 public class MemberDeleteService implements ServiceInterface {
 	@Override
 	public Object service(Object obj) {
-		MemberDao dao = new MemberDao();
+		OracleMemberDao dao = new OracleMemberDao();
 		Member member = (Member) obj;
 		String pw;
 		int state = 0;
