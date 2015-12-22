@@ -52,8 +52,8 @@ public class OracleQnaDao extends QnaDao {
 			list = new ArrayList<Qna>();
 			while(rs.next()) {
 				list.add(new Qna(rs.getInt("no"), rs.getString("title"), rs.getString("question"), rs.getString("answer"), rs.getString("wdate"), rs.getString("writer"), rs.getInt("hit")));
-				return list;
 			}
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
