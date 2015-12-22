@@ -9,7 +9,6 @@ public class Board {
 	public Board(int no, String title,String writer, String wdate, int hit) {
 		this.no = no;
 		this.title = title;
-		this.content = content;
 		this.writer = writer;
 		this.wdate = wdate;
 		this.hit = hit;
