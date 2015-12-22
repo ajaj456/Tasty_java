@@ -3,11 +3,9 @@ package com.tasty.qna.service;
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.QnaNotFoundException;
 import com.tasty.member.model.Login;
+import com.tasty.qna.dao.OracleQnaDao;
 import com.tasty.qna.dao.QnaDao;
 import com.tasty.qna.model.Qna;
-import com.tasty.qna.service.QnaDeleteService;
-import com.tasty.qna.service.QnaReplyService;
-import com.tasty.qna.service.QnaUpdateService;
 import com.tasty.util.Input;
 import com.tasty.util.Print;
 import com.tasty.view.qna.PrintQna;
@@ -17,7 +15,7 @@ public class QnaViewService implements ServiceInterface {
 	@Override
 	public Object service(Object obj) {
 		System.out.print("질문번호: ");
-		QnaDao dao = new QnaDao();
+		QnaDao dao = new OracleQnaDao();
 		Qna qna = dao.view(Input.inputInt());	// Input.inputInt()로 입력된 숫자를 dao.view()가 받아 해당되는
 												// 글 번호의 Qna 타입 데이터를 불러와 qna에 대입
 		try {
