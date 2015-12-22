@@ -20,7 +20,7 @@ public abstract class BoardDao {
 	public abstract List<Board> list();
 	public abstract void write(Board board);
 	
-	public Object view(int no) {
+	public Board view(int no) {
 		Board board = new Board();
 		try {
 			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
@@ -29,7 +29,7 @@ public abstract class BoardDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				board.setNo(rs.getInt("no"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
@@ -37,7 +37,6 @@ public abstract class BoardDao {
 				board.setWdate(rs.getString("wdate"));
 				board.setHit(rs.getInt("hit"));
 			}
-
 			return board;
 		} catch (Exception e) {
 			// TODO: handle exception
