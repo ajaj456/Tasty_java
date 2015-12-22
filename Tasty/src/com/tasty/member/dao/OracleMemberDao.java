@@ -76,6 +76,4 @@ public class OracleMemberDao extends MemberDao {
 			}
 		}
 	}
-
-	
 }

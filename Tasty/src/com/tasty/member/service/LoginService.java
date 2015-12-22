@@ -1,6 +1,7 @@
 package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
+import com.tasty.member.dao.MemberDao;
 import com.tasty.member.dao.OracleMemberDao;
 import com.tasty.member.model.Login;
 import com.tasty.member.model.Member;
@@ -9,7 +10,7 @@ import com.tasty.util.Input;
 public class LoginService implements ServiceInterface{
 	@Override
 	public Object service(Object obj) {
-		OracleMemberDao dao = new OracleMemberDao();
+		MemberDao dao = new OracleMemberDao();
 		
 		Login login;
 		

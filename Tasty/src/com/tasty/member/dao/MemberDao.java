@@ -5,16 +5,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.tasty.common.CommonDao;
 import com.tasty.member.model.Login;
 import com.tasty.member.model.Member;
 
-public class MemberDao {
+public abstract class MemberDao {
 	Connection conn = null;
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	
+	public abstract ArrayList<Member> list();
+	public abstract void write(Member member);
 	
 	public Login login(String loginId, String loginPw) {
 		try {

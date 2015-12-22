@@ -1,6 +1,7 @@
 package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
+import com.tasty.member.dao.MemberDao;
 import com.tasty.member.dao.OracleMemberDao;
 import com.tasty.member.model.Member;
 import com.tasty.view.member.InputMember;
@@ -12,7 +13,7 @@ public class MemberWriteService implements ServiceInterface {
 		
 		Member member = in.inputMember();
 		
-		OracleMemberDao dao = new OracleMemberDao();
+		MemberDao dao = new OracleMemberDao();
 		
 		dao.write(member);
 		

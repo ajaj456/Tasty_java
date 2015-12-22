@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tasty.controller.ServiceInterface;
 import com.tasty.notice.dao.NoticeDao;
+import com.tasty.notice.dao.OracleNoticeDao;
 import com.tasty.notice.model.Notice;
 
 public class NoticeListService implements ServiceInterface {
@@ -12,7 +13,7 @@ public class NoticeListService implements ServiceInterface {
 	public Object service(Object obj) {
 		// TODO Auto-generated method stub
 		
-		NoticeDao dao = new NoticeDao();
+		NoticeDao dao = new OracleNoticeDao();
 		List<Notice> list=dao.list(obj);
 		listGuideline();
 		return list;

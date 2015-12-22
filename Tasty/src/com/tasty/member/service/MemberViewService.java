@@ -2,6 +2,7 @@ package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.MemberNotFoundException;
+import com.tasty.member.dao.MemberDao;
 import com.tasty.member.dao.OracleMemberDao;
 import com.tasty.member.model.Login;
 import com.tasty.member.model.Member;
@@ -14,7 +15,7 @@ public class MemberViewService implements ServiceInterface {
 	public Object service(Object obj) {
 		ServiceInterface service = null;
 		
-		OracleMemberDao dao = new OracleMemberDao();
+		MemberDao dao = new OracleMemberDao();
 		Member member;
 		String id;
 		PrintMember out = new PrintMember();

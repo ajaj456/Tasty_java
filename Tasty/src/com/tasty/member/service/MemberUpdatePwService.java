@@ -1,6 +1,7 @@
 package com.tasty.member.service;
 
 import com.tasty.controller.ServiceInterface;
+import com.tasty.member.dao.MemberDao;
 import com.tasty.member.dao.OracleMemberDao;
 import com.tasty.member.model.Member;
 import com.tasty.util.Input;
@@ -9,7 +10,7 @@ public class MemberUpdatePwService implements ServiceInterface {
 	@Override
 	public Object service(Object obj) {
 		Member member = (Member) obj;
-		OracleMemberDao dao = new OracleMemberDao();
+		MemberDao dao = new OracleMemberDao();
 		String oldPw;
 		String newPw;
 		String newPw2;

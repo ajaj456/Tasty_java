@@ -1,11 +1,11 @@
 package com.tasty.board.service;
 
 import com.tasty.board.dao.BoardDao;
+import com.tasty.board.dao.OracleBoardDao;
 import com.tasty.controller.ServiceInterface;
-
 import com.tasty.util.Input;
 import com.tasty.util.Print;
-import com.tasty.view.board.*;
+import com.tasty.view.board.PrintBoard;
 
 
 public class BoardViewService implements ServiceInterface {
@@ -13,7 +13,7 @@ public class BoardViewService implements ServiceInterface {
 	ServiceInterface service = null;
 	@Override
 	public Object service(Object obj) {
-		BoardDao dao =  new BoardDao();
+		BoardDao dao =  new OracleBoardDao();
 		int no = Input.inputInt("글번호를 입력하세요");
 		PrintBoard out = new PrintBoard();		
 		while (true) {
