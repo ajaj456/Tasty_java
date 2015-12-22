@@ -17,8 +17,8 @@ public class NoticeViewService implements ServiceInterface {
 	public Object service(Object obj) {
 		NoticeDao dao = new OracleNoticeDao(); // 생성 및 호출
 		Notice notice;
-		while (true) {
 			int no = Input.inputInt("글번호를 입력해주세요");
+			while (true) {
 			notice = dao.view(no);
 			// 없는 글번호를 호출하면 오류메세지가 아닌 다른 메세지를 호출하게 하는 익셉션처리
 			try { 
