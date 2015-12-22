@@ -1,6 +1,6 @@
 package com.tasty.qna.model;
 
-public class Qna {
+public class Qna {	// Qna 타입 저장을 위한 클래스
 
 	private int no;
 	private String title, question, answer, writer, wdate;

@@ -18,19 +18,19 @@ public class QnaController implements ControllerInterface {
 			
 			switch(Input.inputInt()) {
 			case 1:
-				// 글리스트
+				// 글리스트 - 호출, 생성
 				service = new QnaListService();
 				service.service(null);
 				break;
 			
 			case 2:
-				// 질문보기
+				// 질문보기 - 호출, 생성
 				service = new QnaViewService();
 				service.service(null);
 				break;
 				
 			case 3:
-				// 질문하기
+				// 질문하기 -호출, 생성
 				service = new QnaWriteService();
 				service.service(null);
 				break;
