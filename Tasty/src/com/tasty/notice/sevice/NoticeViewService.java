@@ -2,6 +2,7 @@ package com.tasty.notice.sevice;
 
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.NoticeNotFoundException;
+import com.tasty.exception.WrongNumInputException;
 import com.tasty.member.model.Login;
 import com.tasty.notice.dao.NoticeDao;
 import com.tasty.notice.dao.OracleNoticeDao;
@@ -32,7 +33,14 @@ public class NoticeViewService implements ServiceInterface {
 			Print.printTitle("메뉴", "*");
 			Print.printMenu("1. 글수정\t2. 글삭제\n0. 이전 메뉴");
 			// 메뉴처리를 위한 switch문
-			switch (Input.inputInt()) {
+			
+			int num = -1;
+			try {
+				num = Input.inputInt();
+			} catch (WrongNumInputException e) {
+				System.out.println(e.getMessage());
+			}
+			switch (num) {
 			case 1: // 글수정
 				// 관리자만 접근할 수 있도록 하는 처리문
 				if (Login.grade == 9) {
