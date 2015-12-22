@@ -1,6 +1,7 @@
 package com.tasty.qna.service;
 
 import com.tasty.controller.ServiceInterface;
+import com.tasty.exception.QnaNotFoundException;
 import com.tasty.member.model.Login;
 import com.tasty.qna.dao.QnaDao;
 import com.tasty.qna.model.Qna;
@@ -19,6 +20,12 @@ public class QnaViewService implements ServiceInterface {
 		QnaDao dao = new QnaDao();
 		Qna qna = dao.view(Input.inputInt());	// Input.inputInt()로 입력된 숫자를 dao.view()가 받아 해당되는
 												// 글 번호의 Qna 타입 데이터를 불러와 qna에 대입
+		try {
+			checkQna(qna);
+		} catch (QnaNotFoundException e) {
+			e.getMessage();
+			return null;
+		}
 		dao.increase(qna.getNo());	// 받아온 qna의 글번호를 dao.increse로 보내 해당 글의 조회수를 1 올림
 		while(true) {
 			PrintQna out = new PrintQna();
@@ -55,6 +62,11 @@ public class QnaViewService implements ServiceInterface {
 				return null;
 			}
 		}
+	}
+
+	private void checkQna(Qna qna) throws QnaNotFoundException {
+		if(qna == null)
+			throw new QnaNotFoundException();
 	}
 
 }
