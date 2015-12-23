@@ -46,22 +46,22 @@ public class BoardViewService implements ServiceInterface {
 			case 1:
 				// 글수정
 				service = new BoardUpdateService();//생성
-				if(board.getWriter().equals(Input.inputString("작성자")))
-					service.service(board);
-				else if(board.getWriter().equals(Login.name))
+				if(board.getWriter().equals(Login.name))
 					service.service(board);//호출
+				else if(board.getWriter().equals(Input.inputString("작성자")))
+					service.service(board);
 				else
 					System.out.println("작성자만 수정할 수 있습니다.");
 				break;
 			case 2:
 				// 글삭제
 				service = new BoardDeleteService();//생성
-				if(board.getWriter().equals(Input.inputString("작성자"))) {
-					service.service(board.getNo());
+				if(board.getWriter().equals(Login.name)) {
+					service.service(board.getNo());//호출
 					return null;
 				}
-				else if(board.getWriter().equals(Login.name)) {
-					service.service(board.getNo());//호출
+				else if(board.getWriter().equals(Input.inputString("작성자"))) {
+					service.service(board.getNo());
 					return null;
 				}
 				else
