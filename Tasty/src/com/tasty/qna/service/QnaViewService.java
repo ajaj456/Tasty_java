@@ -55,7 +55,7 @@ public class QnaViewService implements ServiceInterface {
 					service.service(qna.getNo());
 				else
 					System.out.println("작성자만 삭제할 수 있습니다.");
-				return null;
+				break;
 				
 			case 3:
 				// 답변하기
