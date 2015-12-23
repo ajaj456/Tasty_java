@@ -16,14 +16,8 @@ public class BoardUpdateService implements ServiceInterface {
 		BoardDao dao  = new OracleBoardDao();//생성및 호출
 		InputBoard in = new InputBoard();//생성및 호출
 		in.inputUpdateData(board);
-		System.out.println("\n수정할 내용을 입력해 주세요!");
-		
-		Board board1 = new Board();
-		board1 = in.inputWrite();//수정된 글을board변수에 저장
-		board1.setNo((int)obj);
-		
-		dao.update(board1); //dao객체를 통해 메소드 처리
-		return board1;
+		dao.update(board); //dao객체를 통해 메소드 처리
+		return board;
 		
 	}
 
