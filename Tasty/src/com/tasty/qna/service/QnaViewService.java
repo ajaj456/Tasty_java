@@ -42,7 +42,7 @@ public class QnaViewService implements ServiceInterface {
 			case 1:
 				// 질문수정
 				service = new QnaUpdateService();
-				if(qna.getWriter().equals(Input.inputString("아이디")))
+				if(qna.getWriter().equals(Input.inputString("작성자")))
 					service.service(qna);
 				else if(qna.getWriter().equals(Login.name))	// 로그인 계정의 이름과 작성자의 이름이 같으면 수정 가능
 					service.service(qna);
@@ -53,7 +53,7 @@ public class QnaViewService implements ServiceInterface {
 			case 2:
 				// 질문삭제
 				service = new QnaDeleteService();
-				if(qna.getWriter().equals(Input.inputString("아이디")))
+				if(qna.getWriter().equals(Input.inputString("작성자")))
 					service.service(qna.getNo());
 				else if (qna.getWriter().equals(Login.name)) // 로그인 계정의 이름과 작성자의 이름이 같으면 삭제 가능
 					service.service(qna.getNo());
