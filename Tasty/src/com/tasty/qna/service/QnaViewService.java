@@ -53,10 +53,14 @@ public class QnaViewService implements ServiceInterface {
 			case 2:
 				// 질문삭제
 				service = new QnaDeleteService();
-				if(qna.getWriter().equals(Input.inputString("작성자")))
+				if(qna.getWriter().equals(Input.inputString("작성자"))) {
 					service.service(qna.getNo());
-				else if (qna.getWriter().equals(Login.name)) // 로그인 계정의 이름과 작성자의 이름이 같으면 삭제 가능
+					return null;
+				}
+				else if (qna.getWriter().equals(Login.name)) { // 로그인 계정의 이름과 작성자의 이름이 같으면 삭제 가능
 					service.service(qna.getNo());
+					return null;
+				}
 				else
 					System.out.println("작성자만 삭제할 수 있습니다.");
 				break;
