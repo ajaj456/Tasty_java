@@ -20,10 +20,6 @@ public class InputQna {
 	public void inputUpdateData(Qna qna) {	// Qna 데이터의 수정을 위한 메소드
 		qna.setTitle(Input.inputString("질문제목"));
 		qna.setQuestion(Input.inputString("질문내용"));
-		if(Login.id != null)
-			qna.setWriter(Login.name);	// 로그인이 되어있으면 작성자에 계정의 이름을 대입
-		else
-			qna.setWriter(Input.inputString("작성자"));
 		return;
 	}
 
