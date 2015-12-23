@@ -102,7 +102,7 @@ public abstract class BoardDao {
 			//실행
 			pstmt.executeUpdate();
 			//표시
-			System.out.println("삭제 성공");
+			System.out.println("삭제되었습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

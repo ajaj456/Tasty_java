@@ -27,7 +27,7 @@ public class PrintBoard{
 		// 깔끔한 출력을 위한 메소드
 		ArrayList<Board> list = (ArrayList<Board>)obj;
 		for (Board board : list) {
-			System.out.println("|" + board.getNo() + " | " + board.getTitle() + " | " + board.getWdate() + " | "
+			System.out.println("|" + board.getNo() + " | " + board.getTitle() + " | " + board.getWriter() + " | " + board.getWdate() + " | "
 					+ board.getHit() + "|");
 		}
 

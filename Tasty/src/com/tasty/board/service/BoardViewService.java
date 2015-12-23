@@ -6,6 +6,7 @@ import com.tasty.board.model.Board;
 import com.tasty.controller.ServiceInterface;
 import com.tasty.exception.BoardNotFoundException;
 import com.tasty.exception.WrongNumInputException;
+import com.tasty.member.model.Login;
 import com.tasty.util.Input;
 import com.tasty.util.Print;
 import com.tasty.view.board.PrintBoard;
@@ -45,13 +46,20 @@ public class BoardViewService implements ServiceInterface {
 			case 1:
 				// 글수정
 				service = new BoardUpdateService();//생성
-				service.service(no);//호출
+				if(board.getWriter().equals(Login.name))
+					service.service(no);//호출
+				else
+					System.out.println("작성자만 수정할 수 있습니다.");
 				break;
 			case 2:
 				// 글삭제
 				service = new BoardDeleteService();//생성
+				if(board.getWriter().equals(Login.name))
+					service.service(no);
+				else
+					System.out.println("작성자만 삭제할 수 있습니다.");
 				service.service(no);//호출
-				return null;
+				break;
 			case 0:
 				// 이전 메뉴
 				return null;
