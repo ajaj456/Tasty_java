@@ -28,8 +28,8 @@ public class PrintNotice {
 		@SuppressWarnings("unchecked")
 		ArrayList<Notice> list = (ArrayList<Notice>) obj;
 		for (Notice notice : list) {
-			System.out.println("|" + notice.getNo() + " | " + notice.getTitle() + " | " + notice.getWdate() + " | "
-					+ notice.getStartDate() + "|"+ notice.getEndDate() + "|");
+			System.out.println("| " + notice.getNo() + " | " + notice.getTitle() + " | " + notice.getWdate() + " | "
+					+ notice.getStartDate() + " | "+ notice.getEndDate() + " |");
 		}
 
 	}

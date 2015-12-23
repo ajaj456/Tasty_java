@@ -21,7 +21,7 @@ public class NoticeListService implements ServiceInterface {
 
 	private void listGuideline() {
 		// TODO Auto-generated method stub
-		System.out.println("| 글번호 | 글제목 |  작성일 | 시작일 | 종료일 |");
+		System.out.println("| 글번호 | 글제목 | 작성일 | 시작일 | 종료일 |");
 		
 	}
 
