@@ -91,7 +91,7 @@ public abstract class QnaDao {
 			// DB 접속
 			conn = DriverManager.getConnection(CommonDao.url, CommonDao.id, CommonDao.pw);
 			// sql문 작성
-			String sql = "update qna set answer = ?, where no = ?)";
+			String sql = "update qna set answer = ? where no = ?";
 			// 상태 - 데이터 세팅
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna.getAnswer());
